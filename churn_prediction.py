@@ -6,11 +6,9 @@ import warnings
 import os
 warnings.simplefilter('ignore')
 
-os.chdir('C:\\Users\\97798\\Desktop\\udemy\\Churn_Prediction')
-CSV_FILE_PATH_ROOT = ''
+# os.chdir('C:\\Users\\97798\\Desktop\\udemy\\Churn_Prediction')
 
 dataframe = pd.read_csv("Churn_Modelling.csv")
-dataframe.head()
 
 df = dataframe.drop(columns = ["RowNumber", "CustomerId", "Surname"])
 
@@ -19,8 +17,6 @@ df_Y = df["Exited"]
 dummies = pd.get_dummies(df_X[['Geography', 'Gender']])
 df_X = df.drop(columns = ['Geography', 'Gender'])
 df_X = pd.concat([df_X, dummies], axis = 1)
-display(df_X.head())
-display(df_Y.head())
 
 from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
